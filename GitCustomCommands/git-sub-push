@@ -1,0 +1,33 @@
+#!/bin/sh
+
+message=$1 # First parameter will be the commit message
+branchName=$2 # First parameter will be the branch to push. If not, we will use current branch
+currentBranch=$(git symbolic-ref --short -q HEAD) # Getting the current branch
+
+if [ ! -z "$2" ]
+then
+  currentBranch = branchName
+fi
+
+if [ ! -z "$1" ] # checking if the commit message is present. If not then aborting.
+then
+  git submodule foreach "
+    exists=\$(git show-ref refs/heads/\$currentBranch | cut -d ' ' -f1)
+
+    if [ ! -z \$exists ] 
+    then
+      git checkout -b $currentBranch
+      git push --set-upstream $currentBranch
+    fi
+
+    git checkout $currentBranch
+    git add .
+    git commit -m "$message"
+    git push"
+
+  git add .
+  git commit -m "$message"
+  git push origin $currentBranch
+else
+  echo "Commit message is not provided"
+fi

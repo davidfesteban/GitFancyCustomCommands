@@ -10,7 +10,7 @@ chmod +x GitCustomCommands/git-lazypush
 export PATH=$PATH:$PWD/GitCustomCommands
 ```
 
-Tutorial:
+Tutorial chachi:
 
 [Please refer to Source in LevelUp](https://levelup.gitconnected.com/automate-repetitive-tasks-with-custom-git-commands-76a4b71d262f)
 

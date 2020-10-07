@@ -1,0 +1,3 @@
+[submodule "name"]
+	path = name
+	url = https://github.com/davidfesteban/SubmoduleTest.git

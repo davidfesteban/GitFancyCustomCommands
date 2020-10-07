@@ -1,16 +1,15 @@
 #!/bin/sh
 
-branch=$1
-urlGitRepo=$2 # First parameter Url to Git Repo Submodule
+urlGitRepo=$1 # First parameter Url to Git Repo Submodule
+name=$2
 
 
 echo "Remember. For newer versions use Relative Paths/URL"
 
-if [ ! -z "$branch" ] && [ ! -z "$urlGitRepo" ] # checking if the commit message is present. If not then aborting.
+if [ ! -z "$urlGitRepo" ] && [ ! -z "$name" ] # checking if the commit message is present. If not then aborting.
 then
-  git submodule add -b --force $branch $urlGitRepo
+  git submodule add $urlGitRepo $name
   git submodule init
 else
-  echo "$branch"
   echo "$urlGitRepo"
 fi

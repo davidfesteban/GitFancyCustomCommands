@@ -4,6 +4,7 @@ message=$1 # First parameter will be the commit message
 branchName=$2 # First parameter will be the branch to push. If not, we will use current branch
 currentBranch=$(git symbolic-ref --short -q HEAD) # Getting the current branch
 
+echo $currentBranch
 if [ ! -z "$branchName" ]
 then
   currentBranch=$branchName
